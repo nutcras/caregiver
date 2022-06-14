@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TextFormFieldModel2 extends StatefulWidget {
-  TextFormFieldModel2({
+  const TextFormFieldModel2({
     Key? key,
     @required this.labelText,
     this.hintText,

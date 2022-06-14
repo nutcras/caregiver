@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TextFormFieldModel extends StatelessWidget {
-  TextFormFieldModel({
+  const TextFormFieldModel({
     Key? key,
     @required this.labelText,
     this.hintText,
@@ -15,20 +15,18 @@ class TextFormFieldModel extends StatelessWidget {
   final String? textError;
   final String? helperText;
   final TextEditingController? controller;
-  
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      validator: (value){
-          if (value!.isEmpty) {
-                      return textError;
-                    } else {
-                      return null;
-                    }
-        },
-      
+      validator: (value) {
+        if (value!.isEmpty) {
+          return textError;
+        } else {
+          return null;
+        }
+      },
       style: TextStyle(
         color: Colors.white,
         fontSize: 16,
@@ -46,8 +44,7 @@ class TextFormFieldModel extends StatelessWidget {
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: Colors.pink),
+          borderSide: BorderSide(color: Colors.pink),
           borderRadius: BorderRadius.all(Radius.circular(50)),
         ),
         focusedBorder: OutlineInputBorder(
@@ -57,7 +54,6 @@ class TextFormFieldModel extends StatelessWidget {
           ),
         ),
       ),
-      
     );
   }
 }

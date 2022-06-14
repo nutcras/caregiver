@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../configs/api.dart';
 import 'book_detail.dart';
 import 'package:intl/intl.dart';
-import '../../models/sidemenu.dart';
+import '../../models/side_menu.dart';
 import 'waitingbooking.dart';
 
 class Booking extends StatefulWidget {

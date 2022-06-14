@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/route/route.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'views/outmain/login.dart';
+import 'views/login/login.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

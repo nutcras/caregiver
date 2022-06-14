@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/configs/api.dart';
 import 'package:flutter_appcare/views/carddetail.dart';
-import '../models/sidemenu.dart';
+import '../models/side_menu.dart';
 
 class InputMentor extends StatefulWidget {
   const InputMentor({Key? key, data}) : super(key: key);

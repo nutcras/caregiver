@@ -1,13 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
-
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/configs/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../views/outmain/login.dart';
+import '../views/login/login.dart';
 import '../views/profile.dart';
 
 class SideMenu extends StatefulWidget {
-  SideMenu({
+  const SideMenu({
     Key? key,
     this.routeName,
   }) : super(key: key);
@@ -44,15 +42,15 @@ class _SideMenuState extends State<SideMenu> {
         // ignore: prefer_const_literals_to_create_immutables
         children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 20),
+            padding: const EdgeInsets.symmetric(vertical: 20),
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 45, 134, 156),
+              color: const Color.fromARGB(255, 45, 134, 156),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 5,
-                  offset: Offset(0, 3), // changes position of shadow
+                  offset: const Offset(0, 3), // changes position of shadow
                 ),
               ],
             ),
@@ -64,11 +62,12 @@ class _SideMenuState extends State<SideMenu> {
                     Navigator.push(
                         context,
                         MaterialPageRoute<void>(
-                            builder: (BuildContext context) => Profile()));
+                            builder: (BuildContext context) =>
+                                const Profile()));
                   }),
                   child: Row(
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         // backgroundImage: AssetImage(''),
                         backgroundColor: Colors.white,
                         radius: 40,
@@ -83,12 +82,12 @@ class _SideMenuState extends State<SideMenu> {
                                 ? Text(
                                     '''${data['username']}
 ${data['fname']}  ${data['lname']}''',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   )
-                                : Text(''),
+                                : const Text(''),
                           ],
                         ),
                       )
@@ -100,19 +99,19 @@ ${data['fname']}  ${data['lname']}''',
           ),
           Expanded(
             child: ListView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
               children: [
                 routeItem(
                   context,
-                  Icon(Icons.house),
+                  const Icon(Icons.house),
                   //แก้ตรงนี้--------------------------------------------------------------------------------------
                   'หาพี่เลี้ยง',
                   '/Page1',
                 ),
                 routeItem(
                   context,
-                  Icon(Icons.event_note),
+                  const Icon(Icons.event_note),
                   //แก้ตรงนี้--------------------------------------------------------------------------------------
                   'นัดหมาย',
                   '/book',
@@ -126,7 +125,7 @@ ${data['fname']}  ${data['lname']}''',
                 // ),
                 routeItem(
                   context,
-                  Icon(Icons.settings_backup_restore),
+                  const Icon(Icons.settings_backup_restore),
                   //แก้ตรงนี้--------------------------------------------------------------------------------------
                   'ดูประวัติ',
                   '/Backup',
@@ -141,9 +140,9 @@ ${data['fname']}  ${data['lname']}''',
               children: [
                 ListTile(
                   // leading: Icon(FontAwesomeIcons.rightFromBracket),
-                  title: Text(
+                  title: const Text(
                     'ออกจากระบบ',
-                    style: TextStyle(color: Colors.red),
+                    style: const TextStyle(color: Colors.red),
                   ), //แก้ตรงนี้--------------------------------------------------------------------------------------
                   onTap: () async {
                     SharedPreferences prefs =
@@ -152,7 +151,7 @@ ${data['fname']}  ${data['lname']}''',
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyHomePage(),
+                          builder: (context) => const MyHomePage(),
                           //แก้ตรงนี้--------------------------------------------------------------------------------------
                         ),
                         (route) => false);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../configs/api.dart';
-import 'package:flutter_appcare/models/textFormFieldModel.dart';
+import 'package:flutter_appcare/models/text_model.dart';
 
 class PageOne extends StatefulWidget {
   const PageOne({Key? key}) : super(key: key);

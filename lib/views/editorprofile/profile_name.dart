@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/configs/api.dart';
 
-import '../../models/textFormFieldModel2.dart';
+import '../../models/text_model2.dart';
 
 class ProfileName extends StatefulWidget {
   const ProfileName({Key? key, required this.data}) : super(key: key);
@@ -60,10 +60,6 @@ class _ProfileNameState extends State<ProfileName> {
             dropdownValue = value;
           },
         ),
-        TextFormFieldModel2(
-          controller: title,
-          labelText: 'คำนำหน้า',
-        ),
         const SizedBox(height: 15),
         TextFormFieldModel2(
           labelText: 'ชื่อ',
@@ -76,9 +72,9 @@ class _ProfileNameState extends State<ProfileName> {
         ),
         TextButton(
             onPressed: () {
-              sendDataProfile1(title.text, name.text, surname.text, context);
+              sendDataProfile1(dropdownValue, name.text, surname.text, context);
             },
-            child: Text('ยืนยันการแก้ไข'))
+            child: const Text('ยืนยันการแก้ไข'))
       ])),
     );
   }

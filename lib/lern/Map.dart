@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../models/sidemenu.dart';
+import '../models/side_menu.dart';
 
 class GoogleMaps extends StatefulWidget {
   GoogleMaps({Key? key}) : super(key: key);

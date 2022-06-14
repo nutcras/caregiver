@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appcare/models/dialog.dart';
 import 'package:flutter_appcare/models/profilemenu.dart';
-import 'package:flutter_appcare/models/sidemenu.dart';
-import 'package:flutter_appcare/views/editorprofile/profilename.dart';
+import 'package:flutter_appcare/models/side_menu.dart';
+import 'package:flutter_appcare/views/editorprofile/profile_name.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../configs/api.dart';
-import 'outmain/login.dart';
+import 'login/login.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
