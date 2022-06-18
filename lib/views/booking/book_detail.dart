@@ -67,7 +67,7 @@ class _BookdetailState extends State<Bookdetail> {
                 child: Column(
                   children: [
                     Text(
-                      'ชื่อ ${widget.data['fname']} ${widget.data['lname']}',
+                      '${widget.data['title']} ${widget.data['fname']} ${widget.data['lname']}',
                       style: const TextStyle(fontSize: 18),
                     ),
                     Text('ราคาต่อชั่วโมง ${widget.data['rate']}',

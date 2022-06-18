@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appcare/views/booking/selectBook.dart';
+import 'package:flutter_appcare/views/booking/select_book.dart';
 
 class Carddetail extends StatefulWidget {
   const Carddetail({Key? key, required this.data}) : super(key: key);
@@ -42,7 +42,7 @@ class _CarddetailState extends State<Carddetail> {
                 child: Column(
                   children: [
                     Text(
-                      'ชื่อ ${widget.data['fname']} ${widget.data['lname']}',
+                      '${widget.data['title']} ${widget.data['fname']} ${widget.data['lname']}',
                       style: const TextStyle(fontSize: 18),
                     ),
                     Text('ราคาต่อชั่วโมง ${widget.data['rate']}',

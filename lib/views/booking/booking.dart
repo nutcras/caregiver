@@ -3,7 +3,7 @@ import '../../configs/api.dart';
 import 'book_detail.dart';
 import 'package:intl/intl.dart';
 import '../../models/side_menu.dart';
-import 'waitingbooking.dart';
+import 'waiting_booking.dart';
 
 class Booking extends StatefulWidget {
   const Booking({Key? key}) : super(key: key);

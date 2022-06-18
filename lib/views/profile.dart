@@ -1,3 +1,4 @@
+import 'package:age_calculator/age_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/models/profilemenu.dart';
 import 'package:flutter_appcare/models/side_menu.dart';
@@ -9,18 +10,22 @@ import 'login/login.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
+
+  get data => null;
   @override
   State<Profile> createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
   dynamic data;
+  dynamic age;
   late TextEditingController title;
 
   @override
   void initState() {
     super.initState();
     startApi();
+    calculatorAge();
   }
 
   startApi() async {
@@ -32,6 +37,16 @@ class _ProfileState extends State<Profile> {
     });
   }
 
+  calculatorAge() {
+    DateTime birtday = DateTime(2000, 01, 06);
+    DateDuration duration;
+    duration = AgeCalculator.age(birtday);
+    setState(() {
+      age = duration;
+    });
+  }
+
+  @override
   Widget build(BuildContext) {
     return Scaffold(
       appBar: AppBar(
@@ -71,7 +86,7 @@ class _ProfileState extends State<Profile> {
                   },
                 ),
                 ProfileMenu(
-                  text: '${data['birtday']}',
+                  text: age.toString(),
                   press: () {},
                 ),
                 ProfileMenu(
@@ -112,7 +127,7 @@ class _ProfileState extends State<Profile> {
           : SizedBox(
               child: loadingDialog(),
             ),
-      drawer: SideMenu(),
+      drawer: const SideMenu(),
     );
   }
 
