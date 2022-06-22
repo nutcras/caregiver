@@ -19,6 +19,7 @@ class _InputMentorState extends State<InputMentor> {
 
   startApi() async {
     var item = await inputmentor();
+    print(item);
     setState(() {
       data = item;
     });
@@ -98,6 +99,8 @@ class _InputMentorState extends State<InputMentor> {
                                         fontSize: 20,
                                       ),
                                     ),
+                                    Text(
+                                        '${data[i]['averageRatting']}  ${data[i]['countScore']}')
                                   ],
                                 ),
                               ),
