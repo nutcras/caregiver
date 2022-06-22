@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/configs/api.dart';
-
 import '../../models/text_model2.dart';
 
 class ProfileName extends StatefulWidget {

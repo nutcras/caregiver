@@ -2,7 +2,9 @@ import 'package:age_calculator/age_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/models/profilemenu.dart';
 import 'package:flutter_appcare/models/side_menu.dart';
+import 'package:flutter_appcare/views/editorprofile/profile_address.dart';
 import 'package:flutter_appcare/views/editorprofile/profile_name.dart';
+import 'package:flutter_appcare/views/editorprofile/profile_phone.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../configs/api.dart';
@@ -67,18 +69,10 @@ class _ProfileState extends State<Profile> {
                     ),
                   ],
                 ),
-                // ProfileMenu(
-                //   text: title.text,
-                //   press: () {},
-                // ),
-
                 const SizedBox(height: 20),
                 ProfileMenu(
                   text: '${data['title']} ${data['fname']}  ${data['lname']}',
                   press: () {
-                    // openDialog('${data['title']}', '${data['fname']}',
-                    //     '${data['lname']}', context);
-
                     Navigator.of(context).push(
                       MaterialPageRoute(
                           builder: (context) => ProfileName(data: data)),
@@ -91,11 +85,21 @@ class _ProfileState extends State<Profile> {
                 ),
                 ProfileMenu(
                   text: '${data['phone']}',
-                  press: () {},
+                  press: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => ProfilePhone(data: data)),
+                    );
+                  },
                 ),
                 ProfileMenu(
                   text: '${data['address']}',
-                  press: () {},
+                  press: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => ProfileAddress(data: data)),
+                    );
+                  },
                 ),
                 const SizedBox(height: 20),
                 TextButton(

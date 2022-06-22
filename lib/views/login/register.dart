@@ -107,6 +107,27 @@ class _Register extends State<PageOne> {
                   textError: 'Please fill you surname in the blank',
                   helperText: 'Type you surname for display',
                 ),
+                TextFormField(
+                  controller: picdate,
+                  readOnly: true,
+                  onTap: () {
+                    newDate();
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'วันที่',
+                    labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                    hintStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 0, 0, 0), width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(100))),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 23, 142, 239),
+                            width: 1.5),
+                        borderRadius: BorderRadius.all(Radius.circular(100))),
+                  ),
+                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -121,7 +142,7 @@ class _Register extends State<PageOne> {
                     print('สมัครสมาชิก');
 
                     await checkRegister(username.text, password.text, name.text,
-                        surname.text, context);
+                        surname.text, picdate.text, context);
                   },
                   child: Text(
                     'Confirm',

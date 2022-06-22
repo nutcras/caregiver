@@ -36,7 +36,8 @@ Future checkLogin(String username, String password, context) async {
   });
 }
 
-Future checkRegister(username, password, name, surname, context) async {
+Future checkRegister(
+    username, password, name, surname, birtday, context) async {
   EasyLoading.show(status: 'loading...');
   Uri url = Uri.parse('http://206.189.92.71:3200/api/customer');
   http
@@ -47,7 +48,8 @@ Future checkRegister(username, password, name, surname, context) async {
       "username": username,
       "password": password,
       "fname": name,
-      "lname": surname
+      "lname": surname,
+      "birtday": birtday,
     }),
   )
       .then((req) async {
@@ -188,6 +190,29 @@ Future sendDataProfile1(title, name, surname, context) async {
       "fname": name,
       "lname": surname,
     }),
+  )
+      .then((req) async {
+    if (req.statusCode == 204) {
+      EasyLoading.showSuccess('Great Success!');
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const Profile()),
+          (Route<dynamic> route) => false);
+    } else {
+      EasyLoading.showError('Failed with Error');
+    }
+  });
+}
+
+Future sendDataProfile2(phone, context) async {
+  final prefs =
+      await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
+  int? idUser = prefs.getInt('idm');
+  Uri url = Uri.parse('http://206.189.92.71:3200/api/customer/p4/$idUser');
+  http
+      .put(
+    url,
+    headers: headers,
+    body: jsonEncode({"phone": phone}),
   )
       .then((req) async {
     if (req.statusCode == 204) {
