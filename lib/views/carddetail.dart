@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/views/booking/select_book.dart';
+import 'package:flutter_appcare/views/review/commend.dart';
 
 class Carddetail extends StatefulWidget {
   const Carddetail({Key? key, required this.data}) : super(key: key);
@@ -33,7 +34,21 @@ class _CarddetailState extends State<Carddetail> {
                 // backgroundImage: ('widget.data['image']'),
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
+            Center(
+                child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                        builder: (context) => CommendPage(
+                              data1: widget.data,
+                            )));
+              },
+              child: Text(
+                  'ผู้รีวิว :${widget.data['countScore']}   จำนวนคะแนน :${widget.data['averageRatting']}'),
+            )),
+            const SizedBox(height: 20),
             ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Container(

@@ -19,7 +19,6 @@ class _InputMentorState extends State<InputMentor> {
 
   startApi() async {
     var item = await inputmentor();
-    print(item);
     setState(() {
       data = item;
     });
@@ -100,7 +99,7 @@ class _InputMentorState extends State<InputMentor> {
                                       ),
                                     ),
                                     Text(
-                                        '${data[i]['averageRatting']}  ${data[i]['countScore']}')
+                                        'ผู้รีวิว :${data[i]['countScore']}   จำนวนคะแนน :${data[i]['averageRatting']}')
                                   ],
                                 ),
                               ),
@@ -110,7 +109,7 @@ class _InputMentorState extends State<InputMentor> {
               ),
             ),
           )),
-      drawer: SideMenu(),
+      drawer: const SideMenu(),
     );
   }
 }
