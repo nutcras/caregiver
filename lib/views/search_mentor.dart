@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/configs/api.dart';
 import 'package:flutter_appcare/views/carddetail.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../models/side_menu.dart';
 
 class InputMentor extends StatefulWidget {
@@ -11,6 +12,7 @@ class InputMentor extends StatefulWidget {
 
 class _InputMentorState extends State<InputMentor> {
   dynamic data;
+  late double ratting;
   @override
   void initState() {
     super.initState();
@@ -22,6 +24,11 @@ class _InputMentorState extends State<InputMentor> {
     setState(() {
       data = item;
     });
+  }
+
+  rattingS(i) {
+    ratting = double.parse('${data[i]['averageRatting']}');
+    return ratting;
   }
 
   @override
@@ -98,8 +105,25 @@ class _InputMentorState extends State<InputMentor> {
                                         fontSize: 20,
                                       ),
                                     ),
-                                    Text(
-                                        'ผู้รีวิว :${data[i]['countScore']}   จำนวนคะแนน :${data[i]['averageRatting']}')
+                                    Row(
+                                      children: [
+                                        RatingBarIndicator(
+                                          //ดาวคะแนน---------------------**********************************
+                                          rating: rattingS(i),
+                                          itemSize: 20,
+                                          itemPadding: EdgeInsets.symmetric(
+                                              horizontal: 1),
+                                          itemBuilder: (context, _) =>
+                                              const Icon(
+                                            Icons.star,
+                                            color: Colors.amber,
+                                          ),
+                                        ),
+                                        Text('(${data[i]['countScore']})')
+                                      ],
+                                    ),
+                                    // Text(
+                                    //     'ผู้รีวิว :${data[i]['countScore']}   จำนวนคะแนน :${data[i]['averageRatting']}')
                                   ],
                                 ),
                               ),

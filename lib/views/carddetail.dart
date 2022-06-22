@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/views/booking/select_book.dart';
 import 'package:flutter_appcare/views/review/commend.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class Carddetail extends StatefulWidget {
   const Carddetail({Key? key, required this.data}) : super(key: key);
@@ -12,6 +13,13 @@ class Carddetail extends StatefulWidget {
 
 class _CarddetailState extends State<Carddetail> {
   TextEditingController idMentor = TextEditingController();
+  late double ratting;
+
+  @override
+  void initState() {
+    super.initState();
+    ratting = double.parse('${widget.data['averageRatting']}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +43,7 @@ class _CarddetailState extends State<Carddetail> {
               ),
             ),
             const SizedBox(height: 20),
-            Center(
-                child: TextButton(
+            TextButton(
               onPressed: () {
                 Navigator.push(
                     context,
@@ -45,9 +52,21 @@ class _CarddetailState extends State<Carddetail> {
                               data1: widget.data,
                             )));
               },
-              child: Text(
-                  'ผู้รีวิว :${widget.data['countScore']}   จำนวนคะแนน :${widget.data['averageRatting']}'),
-            )),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RatingBarIndicator(
+                    //ดาวคะแนน---------------------**********************************
+                    rating: ratting,
+                    itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                  ),
+                  Text('(${widget.data['countScore']})'),
+                ],
+              ),
+            ),
             const SizedBox(height: 20),
             ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
