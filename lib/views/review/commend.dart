@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../configs/api.dart';
 
 class CommendPage extends StatefulWidget {
@@ -11,7 +11,7 @@ class CommendPage extends StatefulWidget {
 
 class _CommendPageState extends State<CommendPage> {
   dynamic data;
-
+  late double ratting;
   @override
   void initState() {
     super.initState();
@@ -23,6 +23,11 @@ class _CommendPageState extends State<CommendPage> {
     setState(() {
       data = item;
     });
+  }
+
+  rattingS(i) {
+    ratting = double.parse('${data[i]['score']}');
+    return ratting;
   }
 
   @override
@@ -59,13 +64,23 @@ class _CommendPageState extends State<CommendPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '${data[i]['cust_id']}',
+                                  '${data[i]['fname']}',
                                   style: const TextStyle(fontSize: 15),
                                 ),
-                                Text('${data[i]['score']}'),
+                                RatingBarIndicator(
+                                  //ดาวคะแนน---------------------**********************************
+                                  rating: double.parse('3'),
+                                  itemSize: 20,
+                                  itemPadding:
+                                      EdgeInsets.symmetric(horizontal: 1),
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                ),
                                 Text(
                                   '${data[i]['review']}',
-                                  style: TextStyle(fontSize: 8),
+                                  style: const TextStyle(fontSize: 18),
                                 )
                               ],
                             ),

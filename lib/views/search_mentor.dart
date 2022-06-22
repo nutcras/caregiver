@@ -12,7 +12,7 @@ class InputMentor extends StatefulWidget {
 
 class _InputMentorState extends State<InputMentor> {
   dynamic data;
-  late double ratting;
+
   @override
   void initState() {
     super.initState();
@@ -24,11 +24,6 @@ class _InputMentorState extends State<InputMentor> {
     setState(() {
       data = item;
     });
-  }
-
-  rattingS(i) {
-    ratting = double.parse('${data[i]['averageRatting']}');
-    return ratting;
   }
 
   @override
@@ -109,7 +104,8 @@ class _InputMentorState extends State<InputMentor> {
                                       children: [
                                         RatingBarIndicator(
                                           //ดาวคะแนน---------------------**********************************
-                                          rating: rattingS(i),
+                                          rating: double.parse(
+                                              '${data[i]['averageRatting']}'),
                                           itemSize: 20,
                                           itemPadding: EdgeInsets.symmetric(
                                               horizontal: 1),
