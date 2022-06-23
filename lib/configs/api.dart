@@ -176,7 +176,7 @@ Future sendtimebook(
     body: jsonEncode({
       "start_time": picdate + ' ' + pictime,
       "end_time": picdate2 + ' ' + pictime2,
-      "rate": ratePhr,
+      "result": ratePhr,
       "men_id": idmentor,
       "cust_id": idUser,
       "bstatus": 71,

@@ -84,9 +84,6 @@ class _SelectBookingState extends State<SelectBooking> {
       DateTime? date2 = DateTime(selectdate2!.year, selectdate2!.month,
           selectdate2!.day, selecttime2!.hour, selecttime2!.minute);
       final difference = date2.difference(date1);
-      print(difference.inHours);
-      print((difference.inMinutes - (difference.inHours * 60)) *
-          0.016666666666667);
       return result = (difference.inHours +
               (difference.inMinutes - (difference.inHours * 60)) *
                   0.016666666666667) *
