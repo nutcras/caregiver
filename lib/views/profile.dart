@@ -52,7 +52,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ข้อมูลส่วนตัวจ้าาาา'),
+        title: const Text('ข้อมูลส่วนตัวจ้าาาาkkk'),
         backgroundColor: const Color.fromARGB(255, 45, 134, 156),
       ),
       body: data != null
