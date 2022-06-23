@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appcare/views/booking/confirm_booking.dart';
 import '../../configs/api.dart';
 import 'package:intl/intl.dart';
 
@@ -14,63 +15,82 @@ class _SelectBookingState extends State<SelectBooking> {
   TextEditingController pictime = TextEditingController();
   TextEditingController picdate2 = TextEditingController();
   TextEditingController pictime2 = TextEditingController();
-
+  DateTime? selectdate, selectdate2;
+  TimeOfDay? selecttime, selecttime2;
   DateTime? datenow = DateTime.now();
+  late DateTime datecal, datecal2;
+  var ratePhr;
 
   @override
   Widget build(BuildContext context) {
     void newDate() async {
-      DateTime? date = await showDatePicker(
+      selectdate = await showDatePicker(
           context: context,
           initialDate: datenow!,
           firstDate: DateTime(DateTime.now().year, DateTime.now().month, 1),
           lastDate: DateTime(DateTime.now().year, DateTime.now().month, 30));
-      if (date != null) {
+      if (selectdate != null) {
         setState(() {
-          datenow = date;
-          picdate.text = DateFormat("yyyy-MM-dd").format(date);
-          DateFormat("yyyy-MM-dd").format(date);
+          datenow = selectdate;
+          picdate.text = DateFormat("yyyy-MM-dd").format(selectdate!);
+          DateFormat("yyyy-MM-dd").format(selectdate!);
         });
       }
     }
 
     void newTime() async {
-      TimeOfDay? time =
+      selecttime =
           await showTimePicker(context: context, initialTime: TimeOfDay.now());
-      if (time != null) {
+      if (selecttime != null) {
         setState(() {
           // datenow = date;
-          pictime.text = '${time.hour}:${time.minute}';
+          pictime.text = '${selecttime!.hour}:${selecttime?.minute}';
           // DateFormat("dd/MM/yyyy").format(date);
         });
       }
     }
 
     void newDate2() async {
-      DateTime? date = await showDatePicker(
+      selectdate2 = await showDatePicker(
           context: context,
           initialDate: datenow!,
           firstDate: DateTime(DateTime.now().year, DateTime.now().month, 1),
           lastDate: DateTime(DateTime.now().year, DateTime.now().month, 30));
-      if (date != null) {
+      if (selectdate2 != null) {
         setState(() {
-          datenow = date;
-          picdate2.text = DateFormat("yyyy-MM-dd").format(date);
-          DateFormat("yyyy-MM-dd").format(date);
+          datenow = selectdate2;
+          picdate2.text = DateFormat("yyyy-MM-dd").format(selectdate2!);
+          DateFormat("yyyy-MM-dd").format(selectdate2!);
         });
       }
     }
 
     void newTime2() async {
-      TimeOfDay? time =
+      selecttime2 =
           await showTimePicker(context: context, initialTime: TimeOfDay.now());
-      if (time != null) {
+      if (selecttime2 != null) {
         setState(() {
           // datenow = date;
-          pictime2.text = '${time.hour}:${time.minute}';
+          pictime2.text = '${selecttime2!.hour}:${selecttime2?.minute}';
           // DateFormat("dd/MM/yyyy").format(date);
         });
       }
+    }
+
+    calculator(rate) {
+      final result, convert;
+      DateTime? date1 = DateTime(selectdate!.year, selectdate!.month,
+          selectdate!.day, selecttime!.hour, selecttime!.minute);
+      DateTime? date2 = DateTime(selectdate2!.year, selectdate2!.month,
+          selectdate2!.day, selecttime2!.hour, selecttime2!.minute);
+      final difference = date2.difference(date1);
+      print(difference.inHours);
+      print((difference.inMinutes - (difference.inHours * 60)) *
+          0.016666666666667);
+      return result = (difference.inHours +
+              (difference.inMinutes - (difference.inHours * 60)) *
+                  0.016666666666667) *
+          rate;
     }
 
     return Scaffold(
@@ -184,8 +204,19 @@ class _SelectBookingState extends State<SelectBooking> {
                 const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: (() {
-                    sendtimebook(widget.data['idm'], pictime.text, picdate.text,
-                        pictime2.text, picdate2.text, context);
+                    ratePhr = calculator(widget.data['rate']);
+                    // sendtimebook(widget.data['idm'], pictime.text, picdate.text,
+                    //     pictime2.text, picdate2.text, ratePhr, context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                            builder: (BuildContext context) => ConfirmBook(
+                                widget.data,
+                                pictime.text,
+                                picdate.text,
+                                pictime2.text,
+                                picdate2.text,
+                                ratePhr)));
                   }),
                   child: const Text('ยืนยันการจอง'),
                 )

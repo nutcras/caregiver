@@ -164,7 +164,7 @@ Future<dynamic> inputcommend(dynamic idMentor) async {
 }
 
 Future sendtimebook(
-    idmentor, pictime, picdate, pictime2, picdate2, context) async {
+    idmentor, pictime, picdate, pictime2, picdate2, ratePhr, context) async {
   final prefs =
       await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
   int? idUser = prefs.getInt('idm');
@@ -176,6 +176,7 @@ Future sendtimebook(
     body: jsonEncode({
       "start_time": picdate + ' ' + pictime,
       "end_time": picdate2 + ' ' + pictime2,
+      "rate": ratePhr,
       "men_id": idmentor,
       "cust_id": idUser,
       "bstatus": 71,
