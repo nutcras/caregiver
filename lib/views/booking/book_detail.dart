@@ -55,6 +55,10 @@ class _BookdetailState extends State<Bookdetail> {
                   fontSize: 16,
                 ),
               ),
+              Text(
+                'ยอดทั้งหมด :   ${widget.data['result']}  บาท',
+                style: TextStyle(fontSize: 17),
+              ),
             ])),
             const SizedBox(
               height: 30,
@@ -129,7 +133,7 @@ class _BookdetailState extends State<Bookdetail> {
                 ),
               ],
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 15),
             TextButton(
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.fromLTRB(70, 15, 70, 15),
