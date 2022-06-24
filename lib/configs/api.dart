@@ -110,7 +110,6 @@ Future<dynamic> getdataprofile() async {
       await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
   int? idUser = prefs.getInt('idm');
   Uri url = Uri.parse('http://206.189.92.71:3200/api/customer/$idUser');
-  // Uri url = Uri.parse('http://192.168.1.9:3200/api/customer/$idUser');
   return await http
       .get(
     url,
