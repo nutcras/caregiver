@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/configs/api.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 class ProfilePhone extends StatefulWidget {
   const ProfilePhone({Key? key, required this.data}) : super(key: key);
@@ -14,7 +13,6 @@ class _ProfilePhoneState extends State<ProfilePhone> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     phone.text = widget.data['phone'];
   }
@@ -23,29 +21,18 @@ class _ProfilePhoneState extends State<ProfilePhone> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('แก้ไขเบอร์โทรศัพท์'),
+        title: const Text('แก้ไขเบอร์โทรศัพท์'),
         backgroundColor: const Color.fromARGB(255, 45, 134, 156),
       ),
       body: Container(
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         child: Column(
           children: [
-            IntlPhoneField(
+            TextFormField(
               controller: phone,
-              decoration: InputDecoration(
-                labelText: 'Phone Number',
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(),
-                ),
-              ),
-              onChanged: (phone) {
-                print(phone.completeNumber);
-              },
-              onCountryChanged: (country) {
-                print('Country changed to: ' + country.name);
-              },
+              maxLength: 10,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextButton(
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.fromLTRB(70, 15, 70, 15),

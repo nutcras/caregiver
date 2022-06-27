@@ -32,13 +32,12 @@ List<DropdownMenuItem<String>>? items = [
 ];
 
 class _ProfileNameState extends State<ProfileName> {
-  TextEditingController title = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController surname = TextEditingController();
   @override
   void initState() {
     super.initState();
-    title.text = widget.data['title'];
+    dropdownValue = widget.data['title'];
     name.text = widget.data['fname'];
     surname.text = widget.data['lname'];
   }
@@ -58,6 +57,28 @@ class _ProfileNameState extends State<ProfileName> {
           onChanged: (value) {
             dropdownValue = value;
           },
+          decoration: InputDecoration(
+            labelText: 'คำนำหน้า',
+            labelStyle: const TextStyle(color: Colors.black),
+            hintStyle: const TextStyle(color: Colors.black),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(50),
+              ),
+            ),
+            errorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.pink),
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderSide:
+                  const BorderSide(color: Color.fromARGB(255, 100, 100, 100)),
+              borderRadius: BorderRadius.all(
+                const Radius.circular(50),
+              ),
+            ),
+          ),
         ),
         const SizedBox(height: 15),
         TextFormFieldModel2(

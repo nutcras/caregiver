@@ -19,6 +19,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  TextEditingController dateage = TextEditingController();
   dynamic data;
   dynamic age;
   late TextEditingController title;

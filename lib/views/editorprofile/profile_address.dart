@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appcare/configs/api.dart';
 import '../../models/text_model2.dart';
 
 class ProfileAddress extends StatefulWidget {
@@ -29,7 +30,11 @@ class _ProfileAddressState extends State<ProfileAddress> {
           labelText: 'address',
           controller: address,
         ),
-        TextButton(onPressed: () {}, child: const Text('ยืนยันการแก้ไข'))
+        TextButton(
+            onPressed: () {
+              sendDataProfile5(address.text, context);
+            },
+            child: const Text('ยืนยันการแก้ไข'))
       ])),
     );
   }
