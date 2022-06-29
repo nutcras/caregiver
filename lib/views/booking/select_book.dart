@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appcare/views/booking/confirm_booking.dart';
 import '../../configs/api.dart';
 import 'package:intl/intl.dart';
 
@@ -202,18 +201,37 @@ class _SelectBookingState extends State<SelectBooking> {
                 ElevatedButton(
                   onPressed: (() {
                     ratePhr = calculator(widget.data['rate']);
-                    // sendtimebook(widget.data['idm'], pictime.text, picdate.text,
-                    //     pictime2.text, picdate2.text, ratePhr, context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                            builder: (BuildContext context) => ConfirmBook(
-                                widget.data,
-                                pictime.text,
-                                picdate.text,
-                                pictime2.text,
-                                picdate2.text,
-                                ratePhr)));
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              title: const Text('ตรวจสอบการยืนยัน'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(widget.data['fname'] +
+                                      '  ' +
+                                      widget.data['lname']),
+                                  Text(picdate.text + '  ' + pictime.text),
+                                  Text(picdate2.text + '  ' + pictime2.text),
+                                  Text('ยอดทั้งหมด  : ' +
+                                      ratePhr.toStringAsFixed(2)),
+                                  const SizedBox(height: 20),
+                                  ElevatedButton(
+                                    onPressed: (() {
+                                      sendtimebook(
+                                          widget.data['idm'],
+                                          pictime.text,
+                                          picdate.text,
+                                          pictime2.text,
+                                          picdate2.text,
+                                          ratePhr,
+                                          context);
+                                    }),
+                                    child: const Text('ยืนยันการจอง'),
+                                  )
+                                ],
+                              ),
+                            ));
                   }),
                   child: const Text('ยืนยันการจอง'),
                 )
