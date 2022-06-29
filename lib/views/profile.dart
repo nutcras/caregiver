@@ -65,6 +65,8 @@ class _ProfileState extends State<Profile> {
                   children: [
                     CircleAvatar(
                       radius: 60,
+                      backgroundImage: NetworkImage(
+                          'https://github.com/nutcras/images/blob/main/images/1.jpeg?raw=true'),
                       // backgroundImage: AssetImage(''),
                       backgroundColor: const Color.fromARGB(255, 45, 134, 156),
                     ),
