@@ -37,58 +37,63 @@ class _CommendPageState extends State<CommendPage> {
           title: Text('Commend'),
         ),
         body: SizedBox(
-            child: ListView.builder(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
           itemCount: data?.length ?? 0,
           itemBuilder: (context, i) => InkWell(
-            child: Card(
-              elevation: 10,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(22),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${data[i]['fname']}',
-                                  style: const TextStyle(fontSize: 15),
-                                ),
-                                RatingBarIndicator(
-                                  //ดาวคะแนน---------------------**********************************
-                                  rating: double.parse('3'),
-                                  itemSize: 20,
-                                  itemPadding:
-                                      EdgeInsets.symmetric(horizontal: 1),
-                                  itemBuilder: (context, _) => const Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  ),
-                                ),
-                                Text(
-                                  '${data[i]['review']}',
-                                  style: const TextStyle(fontSize: 18),
-                                )
-                              ],
+              child: Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            const SizedBox(
+                              width: 10,
                             ),
-                          ),
-                        ])
-                  ]),
-            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(22),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${data[i]['fname']}',
+                                    style: const TextStyle(fontSize: 15),
+                                  ),
+                                  SizedBox(height: 5,),
+                                  RatingBarIndicator(
+                                    //ดาวคะแนน---------------------**********************************
+                                    rating: double.parse('3'),
+                                    itemSize: 20,
+                                    itemPadding:
+                                        EdgeInsets.symmetric(horizontal: 1),
+                                    itemBuilder: (context, _) => const Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                  ),
+                                  SizedBox(height: 5,),
+                                  Text(
+                                    '${data[i]['review']}',
+                                    style: const TextStyle(fontSize: 18),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ])
+                    ]),
+              ),
           ),
-        )));
+        ),
+            )));
   }
 }
