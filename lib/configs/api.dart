@@ -53,10 +53,12 @@ Future checkRegister(
     }),
   )
       .then((req) async {
+    print(req.statusCode);
     if (req.statusCode == 201) {
       final prefs = await SharedPreferences.getInstance();
       var data = jsonDecode(req.body);
       prefs.setString('token', data['token']);
+      prefs.setString('idm', data['idc']);
       headers?['Authorization'] = "bearer ${data['token']}";
       EasyLoading.showSuccess('Great Success!');
       Navigator.of(context).pushAndRemoveUntil(
