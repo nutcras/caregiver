@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appcare/configs/api.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 
@@ -11,7 +12,15 @@ class FinishDetail extends StatefulWidget {
 }
 
 class _BookdetailState2 extends State<FinishDetail> {
-  get children => null;
+  TextEditingController review = TextEditingController();
+  TextEditingController score = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    setState(() {
+      score.text = "5";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,13 +170,14 @@ class _BookdetailState2 extends State<FinishDetail> {
                                   color: Colors.amber,
                                 ),
                                 onRatingUpdate: (rating) {
-                                  print(rating);
+                                  score.text = rating.toString();
                                 },
                               ),
                               SizedBox(
                                 height: 15,
                               ),
                               TextFormField(
+                                controller: review,
                                 maxLines: 2,
                                 decoration: InputDecoration(
                                   labelText:
@@ -187,7 +197,8 @@ class _BookdetailState2 extends State<FinishDetail> {
                               ),
                               ElevatedButton(
                                 onPressed: (() {
-                                  
+                                  sendReview(widget.data['idb'], review.text,
+                                      score.text, context);
                                 }),
                                 child: const Text('ยืนยัน'),
                               )

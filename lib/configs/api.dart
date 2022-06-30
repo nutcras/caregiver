@@ -4,7 +4,6 @@ import 'package:flutter_appcare/configs/config.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../views/booking/waiting_booking.dart';
 import '../views/search_mentor.dart';
 import '../views/profile.dart';
@@ -131,6 +130,7 @@ Future<dynamic> getdata(dynamic idPage) async {
   final prefs =
       await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
   int? idUser = prefs.getInt('idm');
+
   Uri url = Uri.parse(
       'http://206.189.92.71:3200/api/booking/men/$idPage/$idUser'); //รับค่ามาจากiduser หรือตัวที่แชร์มาจากหน้าlogin ส่งไปยังurlเพื่อเช็คว่าคนนี้มีนัดหมายใครบ้าง รับค่ามาจากiduser หรือตัวที่แชร์มาจากหน้าlogin ส่งไปยังurlเพื่อเช็คว่าคนนี้มีนัดหมายใครบ้าง
   return await http
@@ -138,6 +138,7 @@ Future<dynamic> getdata(dynamic idPage) async {
     url,
   )
       .then((req) async {
+    print(req.statusCode);
     if (req.statusCode == 200) {
       var data = jsonDecode(req.body);
       return data;
@@ -195,20 +196,22 @@ Future sendtimebook(
   });
 }
 
-Future sendReview(idbook, context) async {
-  Uri url = Uri.parse('http://206.189.92.71:3200/api/booking/$idbook');
+Future sendReview(idbook, String review, String score, context) async {
+  Uri url = Uri.parse('http://206.189.92.71:3200/api/booking/review/$idbook');
   http
-      .post(
+      .put(
     url,
     headers: headers,
-    body: jsonEncode({}),
+    body: jsonEncode({
+      "review": review,
+      "score": score,
+    }),
   )
       .then((req) async {
-    if (req.statusCode == 201) {
+    print(req.statusCode);
+    if (req.statusCode == 204) {
       EasyLoading.showSuccess('Great Success!');
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => const WaitingBooking()),
-          (Route<dynamic> route) => false);
+      Navigator.pop(context);
     } else {
       EasyLoading.showError('Failed with Error');
     }
