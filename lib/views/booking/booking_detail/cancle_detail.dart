@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appcare/configs/api.dart';
 import 'package:intl/intl.dart';
 
-class Bookdetail extends StatefulWidget {
-  const Bookdetail({Key? key, required this.data}) : super(key: key);
+class Bookdetail2 extends StatefulWidget {
+  const Bookdetail2({Key? key, required this.data}) : super(key: key);
 
   final dynamic data;
   @override
-  State<Bookdetail> createState() => _BookdetailState();
+  State<Bookdetail2> createState() => _BookdetailState2();
 }
 
-class _BookdetailState extends State<Bookdetail> {
+class _BookdetailState2 extends State<Bookdetail2> {
   get children => null;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ข้อมูลพนักงงาน'),
+        title: const Text('ข้อมูลพี่เลี้ยง'),
         backgroundColor: const Color.fromARGB(255, 45, 134, 156),
       ),
       body: SafeArea(
@@ -55,10 +54,6 @@ class _BookdetailState extends State<Bookdetail> {
                   fontSize: 16,
                 ),
               ),
-              Text(
-                'ยอดทั้งหมด :   ${widget.data['result']}  บาท',
-                style: TextStyle(fontSize: 17),
-              ),
             ])),
             const SizedBox(
               height: 30,
@@ -74,9 +69,7 @@ class _BookdetailState extends State<Bookdetail> {
                       '${widget.data['title']} ${widget.data['fname']} ${widget.data['lname']}',
                       style: const TextStyle(fontSize: 18),
                     ),
-                    Text('ราคาต่อชั่วโมง ${widget.data['rate']}',
-                        style: const TextStyle(fontSize: 18)),
-                    Text('${widget.data['type']}',
+                    Text('ประเภทการทำงาน : ${widget.data['type']}',
                         style: const TextStyle(fontSize: 18)),
                   ],
                 ),
@@ -133,22 +126,7 @@ class _BookdetailState extends State<Bookdetail> {
                 ),
               ],
             ),
-            const SizedBox(height: 15),
-            TextButton(
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.fromLTRB(70, 15, 70, 15),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                backgroundColor: const Color.fromARGB(255, 232, 92, 22),
-                primary: const Color.fromARGB(255, 255, 255, 255),
-                textStyle: const TextStyle(fontSize: 20),
-              ),
-              onPressed: () {
-                removeBooking('${widget.data['idb']}', context);
-              },
-              child: const Text('ยกเลิกนัด'),
-            ),
+            const SizedBox(height: 50),
           ],
         ),
       ),

@@ -38,10 +38,10 @@ class _CommendPageState extends State<CommendPage> {
         ),
         body: SizedBox(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView.builder(
-          itemCount: data?.length ?? 0,
-          itemBuilder: (context, i) => InkWell(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: data?.length ?? 0,
+            itemBuilder: (context, i) => InkWell(
               child: Card(
                 elevation: 10,
                 shape: RoundedRectangleBorder(
@@ -69,10 +69,14 @@ class _CommendPageState extends State<CommendPage> {
                                     '${data[i]['fname']}',
                                     style: const TextStyle(fontSize: 15),
                                   ),
-                                  SizedBox(height: 5,),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
                                   RatingBarIndicator(
                                     //ดาวคะแนน---------------------**********************************
-                                    rating: double.parse('3'),
+                                    rating: data[i]['score'] != null
+                                        ? double.parse('${data[i]['score']}')
+                                        : 0,
                                     itemSize: 20,
                                     itemPadding:
                                         EdgeInsets.symmetric(horizontal: 1),
@@ -81,7 +85,9 @@ class _CommendPageState extends State<CommendPage> {
                                       color: Colors.amber,
                                     ),
                                   ),
-                                  SizedBox(height: 5,),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
                                   Text(
                                     '${data[i]['review']}',
                                     style: const TextStyle(fontSize: 18),
@@ -92,8 +98,8 @@ class _CommendPageState extends State<CommendPage> {
                           ])
                     ]),
               ),
+            ),
           ),
-        ),
-            )));
+        )));
   }
 }

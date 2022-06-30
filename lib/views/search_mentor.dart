@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_appcare/configs/api.dart';
 import 'package:flutter_appcare/views/carddetail.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import '../models/search_page.dart';
 import '../models/side_menu.dart';
 
 class InputMentor extends StatefulWidget {
@@ -33,6 +34,13 @@ class _InputMentorState extends State<InputMentor> {
       appBar: AppBar(
         title: const Text('หาพี่เลี้ยง'),
         backgroundColor: const Color.fromARGB(255, 45, 134, 156),
+        actions: [
+          // Navigate to the Search Screen
+          IconButton(
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => SearchPage())),
+              icon: Icon(Icons.search))
+        ],
       ),
       body: SafeArea(
         child: SizedBox(

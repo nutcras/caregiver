@@ -195,6 +195,26 @@ Future sendtimebook(
   });
 }
 
+Future sendReview(idbook, context) async {
+  Uri url = Uri.parse('http://206.189.92.71:3200/api/booking/$idbook');
+  http
+      .post(
+    url,
+    headers: headers,
+    body: jsonEncode({}),
+  )
+      .then((req) async {
+    if (req.statusCode == 201) {
+      EasyLoading.showSuccess('Great Success!');
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const WaitingBooking()),
+          (Route<dynamic> route) => false);
+    } else {
+      EasyLoading.showError('Failed with Error');
+    }
+  });
+}
+
 Future sendDataProfile1(title, name, surname, context) async {
   final prefs =
       await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin

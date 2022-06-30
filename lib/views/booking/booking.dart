@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../configs/api.dart';
-import 'book_detail.dart';
+import 'booking_detail/book_detail.dart';
 import 'package:intl/intl.dart';
 import '../../models/side_menu.dart';
 import 'waiting_booking.dart';

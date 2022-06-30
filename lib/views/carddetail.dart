@@ -18,14 +18,16 @@ class _CarddetailState extends State<Carddetail> {
   @override
   void initState() {
     super.initState();
-    ratting = double.parse('${widget.data['averageRatting']}');
+    ratting = widget.data['averageRatting'] != null
+        ? double.parse('${widget.data['averageRatting']}')
+        : 0;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ข้อมูลพนักงงาน'),
+        title: const Text('ข้อมูลพี่เลี้ยง'),
         backgroundColor: const Color.fromARGB(255, 45, 134, 156),
       ),
       body: SafeArea(
@@ -79,9 +81,9 @@ class _CarddetailState extends State<Carddetail> {
                       '${widget.data['title']} ${widget.data['fname']} ${widget.data['lname']}',
                       style: const TextStyle(fontSize: 18),
                     ),
-                    Text('ราคาต่อชั่วโมง ${widget.data['rate']}',
+                    Text('ราคาต่อชั่วโมง : ${widget.data['rate']}',
                         style: const TextStyle(fontSize: 18)),
-                    Text('${widget.data['type']}',
+                    Text('ประเภทการทำงาน : ${widget.data['type']}',
                         style: const TextStyle(fontSize: 18)),
                   ],
                 ),

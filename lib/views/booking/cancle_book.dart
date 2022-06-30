@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../configs/api.dart';
-import 'book_detail2.dart';
+import 'booking_detail/cancle_detail.dart';
 import 'package:intl/intl.dart';
 
 class CancleBooking extends StatefulWidget {

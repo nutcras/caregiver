@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_appcare/views/booking/booking_detail/finish_detail.dart';
 import '../../configs/api.dart';
-import 'book_detail2.dart';
+import 'booking_detail/cancle_detail.dart';
 import 'package:intl/intl.dart';
 
 class FinishBooking extends StatefulWidget {
@@ -49,7 +50,7 @@ class _FinishBookingState extends State<FinishBooking> {
                     context,
                     MaterialPageRoute<void>(
                         builder: (BuildContext context) =>
-                            Bookdetail2(data: data[i])));
+                            FinishDetail(data: data[i])));
               },
               child: Card(
                 elevation: 10,
