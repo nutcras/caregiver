@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/configs/api.dart';
+import 'package:flutter_appcare/models/button_sidemenu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../views/login/login.dart';
 import '../views/profile.dart';
@@ -102,20 +103,32 @@ ${data['fname']}  ${data['lname']}''',
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
               children: [
-                routeItem(
-                  context,
-                  const Icon(Icons.house),
-                  //แก้ตรงนี้--------------------------------------------------------------------------------------
-                  'หาพี่เลี้ยง',
-                  '/Page1',
+                SizedBox(height: 7),
+                ButtonSidemenu(next: Icons.house, text: "หาพี่เลี้ยง", page: 0),
+                SizedBox(height: 7),
+                ButtonSidemenu(next: Icons.event, text: "นัดหมาย", page: 1),
+                SizedBox(
+                  height: 7,
                 ),
-                routeItem(
-                  context,
-                  const Icon(Icons.event_note),
-                  //แก้ตรงนี้--------------------------------------------------------------------------------------
-                  'นัดหมาย',
-                  '/book',
-                ),
+                ButtonSidemenu(
+                    next: Icons.settings_backup_restore,
+                    text: "ดูประวัติ",
+                    page: 2)
+
+                // routeItem(
+                //   context,
+                //   const Icon(Icons.house),
+                //   //แก้ตรงนี้--------------------------------------------------------------------------------------
+                //   'หาพี่เลี้ยง',
+                //   '/Page1',
+                // ),
+                // routeItem(
+                //   context,
+                //   const Icon(Icons.event_note),
+                //   //แก้ตรงนี้--------------------------------------------------------------------------------------
+                //   'นัดหมาย',
+                //   '/book',
+                // ),
                 // routeItem(
                 //   context,
                 //   Icon(Icons.map),
@@ -123,13 +136,13 @@ ${data['fname']}  ${data['lname']}''',
                 //   'Map',
                 //   '/Map',
                 // ),
-                routeItem(
-                  context,
-                  const Icon(Icons.settings_backup_restore),
-                  //แก้ตรงนี้--------------------------------------------------------------------------------------
-                  'ดูประวัติ',
-                  '/Backup',
-                ),
+                // routeItem(
+                //   context,
+                //   const Icon(Icons.settings_backup_restore),
+                //   //แก้ตรงนี้--------------------------------------------------------------------------------------
+                //   'ดูประวัติ',
+                //   '/Backup',
+                // ),
               ],
             ),
           ),

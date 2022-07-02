@@ -24,20 +24,20 @@ class _Register extends State<PageOne> {
   DateTime? datenow = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    void newDate() async {
-      DateTime? date = await showDatePicker(
-          context: context,
-          initialDate: datenow!,
-          firstDate: DateTime(DateTime.now().year - 70),
-          lastDate: DateTime(DateTime.now().year, DateTime.now().day));
+    // void newDate() async {
+    //   DateTime? date = await showDatePicker(
+    //       context: context,
+    //       initialDate: datenow!,
+    //       firstDate: DateTime(DateTime.now().year - 70),
+    //       lastDate: DateTime(DateTime.now().year, DateTime.now().day));
 
-      if (date != null) {
-        setState(() {
-          datenow = date;
-          picdate.text = DateFormat("yyyy-MM-dd").format(date);
-        });
-      }
-    }
+    //   if (date != null) {
+    //     setState(() {
+    //       datenow = date;
+    //       picdate.text = DateFormat("yyyy-MM-dd").format(date);
+    //     });
+    //   }
+    // }
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 63, 217, 255),
@@ -160,7 +160,7 @@ class _Register extends State<PageOne> {
                 controller: picdate,
                 readOnly: true,
                 onTap: () {
-                  newDate();
+                  // newDate();
                 },
                 decoration: const InputDecoration(
                   labelText: 'birthday',
@@ -189,7 +189,7 @@ class _Register extends State<PageOne> {
                   }
 
                   await checkRegister(username.text, password.text, name.text,
-                      surname.text, picdate.text, context);
+                      surname.text, "2020-06-05", context);
                 },
                 child: Text(
                   'Confirm',

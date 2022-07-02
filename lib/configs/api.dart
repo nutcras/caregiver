@@ -4,6 +4,7 @@ import 'package:flutter_appcare/configs/config.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import '../views/battom_main.dart';
 import '../views/booking/waiting_booking.dart';
 import '../views/search_mentor.dart';
 import '../views/profile.dart';
@@ -27,7 +28,7 @@ Future checkLogin(String username, String password, context) async {
       headers?['Authorization'] = "bearer ${data['token']}";
       EasyLoading.showSuccess('Great Success!');
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => const InputMentor()),
+          MaterialPageRoute(builder: (context) => BottomBarMain(index: 0)),
           (Route<dynamic> route) => false);
     } else {
       EasyLoading.showError('Failed with Error');
@@ -60,7 +61,7 @@ Future checkRegister(
       headers?['Authorization'] = "bearer ${data['token']}";
       EasyLoading.showSuccess('Great Success!');
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => const InputMentor()),
+          MaterialPageRoute(builder: (context) => BottomBarMain(index: 0)),
           (Route<dynamic> route) => false);
     } else {
       EasyLoading.showError('Failed with Error');
@@ -80,8 +81,9 @@ Future<dynamic> removeBooking(dynamic idbook, context) async {
       .then((req) async {
     if (req.statusCode == 204) {
       EasyLoading.showSuccess('Great Success!');
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil('/book', (Route<dynamic> route) => false);
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => BottomBarMain(index: 1)),
+          (Route<dynamic> route) => false);
     } else {
       EasyLoading.showError('Failed with Error');
     }
@@ -138,7 +140,6 @@ Future<dynamic> getdata(dynamic idPage) async {
     url,
   )
       .then((req) async {
-    print(req.statusCode);
     if (req.statusCode == 200) {
       var data = jsonDecode(req.body);
       return data;

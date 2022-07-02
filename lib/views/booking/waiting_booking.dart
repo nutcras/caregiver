@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../configs/api.dart';
+import '../battom_main.dart';
 import 'booking_detail/book_detail.dart';
 import 'package:intl/intl.dart';
 import '../../models/side_menu.dart';
@@ -33,6 +34,15 @@ class _WaitingBookingState extends State<WaitingBooking> {
       appBar: AppBar(
         title: const Text('รอการยืนยัน'),
         backgroundColor: const Color.fromARGB(255, 45, 134, 156),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => BottomBarMain(index: 1)),
+                (Route<dynamic> route) => false);
+          },
+        ),
       ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -104,7 +114,7 @@ class _WaitingBookingState extends State<WaitingBooking> {
           ),
         ),
       ),
-      drawer: SideMenu(),
+
       //หน้าปุ่มsidemenu
     );
   }
