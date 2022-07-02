@@ -1,4 +1,5 @@
 import 'package:age_calculator/age_calculator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appcare/models/profilemenu.dart';
 import 'package:flutter_appcare/models/side_menu.dart';
@@ -34,7 +35,7 @@ class _ProfileState extends State<Profile> {
   startApi() async {
     //เอาตัวidของcustomerมาใช้กับหน้านี้แล้วเอาค่าไปใส่ในidUser
     dynamic item = await getdataprofile();
-    loadingDialogSuc(); //ส่งค่าไปยัง getdataหรือตัวรับapi
+    //ส่งค่าไปยัง getdataหรือตัวรับapi
     setState(() {
       data = item;
     });
@@ -57,92 +58,87 @@ class _ProfileState extends State<Profile> {
         backgroundColor: const Color.fromARGB(255, 45, 134, 156),
       ),
       body: data != null
-          ? Column(
-              children: [
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundImage: NetworkImage(
-                          'https://github.com/nutcras/images/blob/main/images/1.jpeg?raw=true'),
-                      // backgroundImage: AssetImage(''),
-                      backgroundColor: const Color.fromARGB(255, 45, 134, 156),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                ProfileMenu(
-                  text: '${data['title']} ${data['fname']}  ${data['lname']}',
-                  press: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => ProfileName(data: data)),
-                    );
-                  },
-                ),
-                ProfileMenu(
-                  text: age.toString(),
-                  press: () {},
-                ),
-                ProfileMenu(
-                  text: '${data['phone']}',
-                  press: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => ProfilePhone(data: data)),
-                    );
-                  },
-                ),
-                ProfileMenu(
-                  text: '${data['address']}',
-                  press: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => ProfileAddress(data: data)),
-                    );
-                  },
-                ),
-                const SizedBox(height: 20),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    backgroundColor: const Color.fromARGB(255, 232, 92, 22),
-                    primary: const Color.fromARGB(255, 255, 255, 255),
-                    textStyle: const TextStyle(fontSize: 20),
+          ? SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundImage: NetworkImage(
+                            'https://github.com/nutcras/images/blob/main/images/1.jpeg?raw=true'),
+                        // backgroundImage: AssetImage(''),
+                        backgroundColor:
+                            const Color.fromARGB(255, 45, 134, 156),
+                      ),
+                    ],
                   ),
-                  onPressed: () async {
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    prefs.remove('token');
-                    Navigator.pushAndRemoveUntil(
-                        context,
+                  const SizedBox(height: 20),
+                  ProfileMenu(
+                    text: '${data['title']} ${data['fname']}  ${data['lname']}',
+                    press: () {
+                      Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const MyHomePage(),
-                          //แก้ตรงนี้--------------------------------------------------------------------------------------
-                        ),
-                        (route) => false);
-                  },
-                  child: const Text('ออกจากระบบ'),
-                ),
-              ],
+                            builder: (context) => ProfileName(data: data)),
+                      );
+                    },
+                  ),
+                  ProfileMenu(
+                    text: age.toString(),
+                    press: () {},
+                  ),
+                  ProfileMenu(
+                    text: '${data['phone']}',
+                    press: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => ProfilePhone(data: data)),
+                      );
+                    },
+                  ),
+                  ProfileMenu(
+                    text: '${data['address']}',
+                    press: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => ProfileAddress(data: data)),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      backgroundColor: const Color.fromARGB(255, 232, 92, 22),
+                      primary: const Color.fromARGB(255, 255, 255, 255),
+                      textStyle: const TextStyle(fontSize: 20),
+                    ),
+                    onPressed: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.remove('token');
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MyHomePage(),
+                            //แก้ตรงนี้--------------------------------------------------------------------------------------
+                          ),
+                          (route) => false);
+                    },
+                    child: const Text('ออกจากระบบ'),
+                  ),
+                ],
+              ),
             )
-          : SizedBox(
-              child: loadingDialog(),
+          : const Center(
+              child: CupertinoActivityIndicator(),
             ),
       drawer: const SideMenu(),
     );
-  }
-
-  loadingDialog() {
-    EasyLoading.show(status: 'loading...');
-  }
-
-  loadingDialogSuc() {
-    EasyLoading.showSuccess('Success');
   }
 }

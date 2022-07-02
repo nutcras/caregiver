@@ -39,6 +39,10 @@ class _BottomBarMainState extends State<BottomBarMain> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromARGB(255, 163, 50, 255),
+        // selectedFontSize: 15,
+        unselectedItemColor: Color.fromARGB(255, 80, 79, 79),
+        showUnselectedLabels: true,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
