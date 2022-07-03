@@ -77,7 +77,8 @@ class _ProfileState extends State<Profile> {
                   ),
                   const SizedBox(height: 20),
                   ProfileMenu(
-                    text: '${data['title']} ${data['fname']}  ${data['lname']}',
+                    text:
+                        '${data['cust_title']} ${data['cust_fname']}  ${data['cust_lname']}',
                     press: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -90,7 +91,7 @@ class _ProfileState extends State<Profile> {
                     press: () {},
                   ),
                   ProfileMenu(
-                    text: '${data['phone']}',
+                    text: '${data['cust_phone']}',
                     press: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -99,7 +100,7 @@ class _ProfileState extends State<Profile> {
                     },
                   ),
                   ProfileMenu(
-                    text: '${data['address']}',
+                    text: '${data['cust_address']}',
                     press: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(

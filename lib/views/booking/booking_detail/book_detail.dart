@@ -41,22 +41,22 @@ class _BookdetailState extends State<Bookdetail> {
                 child: Column(children: [
               Text(
                 'เริ่ม : ' +
-                    DateFormat('dd-mm-yy' '  เวลา : HH:mm')
-                        .format(DateTime.parse('${widget.data['start_time']}')),
+                    DateFormat('dd-mm-yy' '  เวลา : HH:mm').format(
+                        DateTime.parse('${widget.data['book_starttime']}')),
                 style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
               Text(
                 'ถึง  :  ' +
-                    DateFormat('dd-mm-yy  ' 'เวลา : HH:mm')
-                        .format(DateTime.parse('${widget.data['end_time']}')),
+                    DateFormat('dd-mm-yy  ' 'เวลา : HH:mm').format(
+                        DateTime.parse('${widget.data['book_endtime']}')),
                 style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
               Text(
-                'ยอดทั้งหมด :   ${widget.data['result']}  บาท',
+                'ยอดทั้งหมด :   ${widget.data['book_result']}  บาท',
                 style: TextStyle(fontSize: 17),
               ),
             ])),
@@ -71,10 +71,10 @@ class _BookdetailState extends State<Bookdetail> {
                 child: Column(
                   children: [
                     Text(
-                      '${widget.data['title']} ${widget.data['fname']} ${widget.data['lname']}',
+                      '${widget.data['men_title']} ${widget.data['men_fname']} ${widget.data['men_lname']}',
                       style: const TextStyle(fontSize: 18),
                     ),
-                    Text('ประเภทการทำงาน : ${widget.data['type']}',
+                    Text('ประเภทการทำงาน : ${widget.data['men_type']}',
                         style: const TextStyle(fontSize: 18)),
                   ],
                 ),
@@ -97,7 +97,7 @@ class _BookdetailState extends State<Bookdetail> {
                       size: 30,
                     ),
                     Text(
-                      '   ${widget.data['phone']}',
+                      '   ${widget.data['men_phone']}',
                       style: const TextStyle(fontSize: 18),
                     ),
                     const SizedBox(
@@ -143,7 +143,7 @@ class _BookdetailState extends State<Bookdetail> {
                 textStyle: const TextStyle(fontSize: 20),
               ),
               onPressed: () {
-                removeBooking('${widget.data['idb']}', context);
+                removeBooking('${widget.data['book_id']}', context);
               },
               child: const Text('ยกเลิกนัด'),
             ),

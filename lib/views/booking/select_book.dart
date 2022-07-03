@@ -200,7 +200,7 @@ class _SelectBookingState extends State<SelectBooking> {
                 const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: (() {
-                    ratePhr = calculator(widget.data['rate']);
+                    ratePhr = calculator(widget.data['men_rate']);
                     showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
@@ -208,9 +208,9 @@ class _SelectBookingState extends State<SelectBooking> {
                               content: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Text(widget.data['fname'] +
+                                  Text(widget.data['men_fname'] +
                                       '  ' +
-                                      widget.data['lname']),
+                                      widget.data['men_lname']),
                                   Text(picdate.text + '  ' + pictime.text),
                                   Text(picdate2.text + '  ' + pictime2.text),
                                   Text('ยอดทั้งหมด  : ' +
@@ -219,7 +219,7 @@ class _SelectBookingState extends State<SelectBooking> {
                                   ElevatedButton(
                                     onPressed: (() {
                                       sendtimebook(
-                                          widget.data['idm'],
+                                          widget.data['men_id'],
                                           pictime.text,
                                           picdate.text,
                                           pictime2.text,

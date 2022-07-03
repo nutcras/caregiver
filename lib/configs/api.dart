@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../views/battom_main.dart';
 import '../views/booking/waiting_booking.dart';
-import '../views/search_mentor.dart';
 import '../views/profile.dart';
 
 Future checkLogin(String username, String password, context) async {
@@ -24,7 +23,7 @@ Future checkLogin(String username, String password, context) async {
       final prefs = await SharedPreferences.getInstance();
       var data = jsonDecode(req.body);
       prefs.setString('token', data['token']);
-      prefs.setInt('idm', data['idc']);
+      prefs.setInt('idm', data['cust_id']);
       headers?['Authorization'] = "bearer ${data['token']}";
       EasyLoading.showSuccess('Great Success!');
       Navigator.of(context).pushAndRemoveUntil(
@@ -76,7 +75,7 @@ Future<dynamic> removeBooking(dynamic idbook, context) async {
       .put(url,
           headers: headers,
           body: jsonEncode({
-            "bstatus": 74,
+            "bstatus": "ยกเลิก",
           }))
       .then((req) async {
     if (req.statusCode == 204) {
@@ -128,13 +127,13 @@ Future<dynamic> getdataprofile() async {
   });
 }
 
-Future<dynamic> getdata(dynamic idPage) async {
+Future<dynamic> getdata(String page) async {
   final prefs =
       await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
   int? idUser = prefs.getInt('idm');
 
   Uri url = Uri.parse(
-      'http://206.189.92.71:3200/api/booking/men/$idPage/$idUser'); //รับค่ามาจากiduser หรือตัวที่แชร์มาจากหน้าlogin ส่งไปยังurlเพื่อเช็คว่าคนนี้มีนัดหมายใครบ้าง รับค่ามาจากiduser หรือตัวที่แชร์มาจากหน้าlogin ส่งไปยังurlเพื่อเช็คว่าคนนี้มีนัดหมายใครบ้าง
+      'http://206.189.92.71:3200/api/booking/men/"$page"/$idUser'); //รับค่ามาจากiduser หรือตัวที่แชร์มาจากหน้าlogin ส่งไปยังurlเพื่อเช็คว่าคนนี้มีนัดหมายใครบ้าง รับค่ามาจากiduser หรือตัวที่แชร์มาจากหน้าlogin ส่งไปยังurlเพื่อเช็คว่าคนนี้มีนัดหมายใครบ้าง
   return await http
       .get(
     url,
@@ -182,7 +181,7 @@ Future sendtimebook(
       "result": ratePhr,
       "men_id": idmentor,
       "cust_id": idUser,
-      "bstatus": 71,
+      "bstatus": "รอยืนยัน",
     }),
   )
       .then((req) async {
@@ -209,7 +208,6 @@ Future sendReview(idbook, String review, String score, context) async {
     }),
   )
       .then((req) async {
-    print(req.statusCode);
     if (req.statusCode == 204) {
       EasyLoading.showSuccess('Great Success!');
       Navigator.pop(context);

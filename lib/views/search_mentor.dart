@@ -94,18 +94,18 @@ class _InputMentorState extends State<InputMentor> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        '${data[i]['title']} ${data[i]['fname']} ${data[i]['lname']}',
+                                        '${data[i]['men_title']} ${data[i]['men_fname']} ${data[i]['men_lname']}',
                                         style: const TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(
                                         height: 2,
                                       ),
-                                      Text('Rate/hr: ${data[i]['rate']}'),
+                                      Text('Rate/hr: ${data[i]['men_rate']}'),
                                       const SizedBox(
                                         height: 2,
                                       ),
                                       Text(
-                                        '${data[i]['phone']}',
+                                        '${data[i]['men_phone']}',
                                         style: const TextStyle(
                                           fontSize: 20,
                                         ),

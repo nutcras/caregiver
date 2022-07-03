@@ -37,9 +37,9 @@ class _ProfileNameState extends State<ProfileName> {
   @override
   void initState() {
     super.initState();
-    dropdownValue = widget.data['title'];
-    name.text = widget.data['fname'];
-    surname.text = widget.data['lname'];
+    dropdownValue = widget.data['cust_title'];
+    name.text = widget.data['cust_fname'];
+    surname.text = widget.data['cust_lname'];
   }
 
   @override

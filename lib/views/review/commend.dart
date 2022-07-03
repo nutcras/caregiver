@@ -19,14 +19,14 @@ class _CommendPageState extends State<CommendPage> {
   }
 
   startApi() async {
-    var item = await inputcommend('${widget.data1['idm']}');
+    var item = await inputcommend('${widget.data1['men_id']}');
     setState(() {
       data = item;
     });
   }
 
   rattingS(i) {
-    ratting = double.parse('${data[i]['score']}');
+    ratting = double.parse('${data[i]['book_score']}');
     return ratting;
   }
 
@@ -66,7 +66,7 @@ class _CommendPageState extends State<CommendPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '${data[i]['fname']}',
+                                    '${data[i]['cust_fname']}',
                                     style: const TextStyle(fontSize: 15),
                                   ),
                                   SizedBox(
@@ -74,8 +74,9 @@ class _CommendPageState extends State<CommendPage> {
                                   ),
                                   RatingBarIndicator(
                                     //ดาวคะแนน---------------------**********************************
-                                    rating: data[i]['score'] != null
-                                        ? double.parse('${data[i]['score']}')
+                                    rating: data[i]['book_score'] != null
+                                        ? double.parse(
+                                            "${data[i]['book_score']}")
                                         : 0,
                                     itemSize: 20,
                                     itemPadding:
@@ -89,7 +90,7 @@ class _CommendPageState extends State<CommendPage> {
                                     height: 5,
                                   ),
                                   Text(
-                                    '${data[i]['review']}',
+                                    '${data[i]['book_review']}',
                                     style: const TextStyle(fontSize: 18),
                                   )
                                 ],

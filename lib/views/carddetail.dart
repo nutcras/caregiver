@@ -30,7 +30,7 @@ class _CarddetailState extends State<Carddetail> {
         title: const Text('ข้อมูลพี่เลี้ยง'),
         backgroundColor: const Color.fromARGB(255, 45, 134, 156),
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(
@@ -78,12 +78,12 @@ class _CarddetailState extends State<Carddetail> {
                 child: Column(
                   children: [
                     Text(
-                      '${widget.data['title']} ${widget.data['fname']} ${widget.data['lname']}',
+                      '${widget.data['men_title']} ${widget.data['men_fname']} ${widget.data['men_lname']}',
                       style: const TextStyle(fontSize: 18),
                     ),
-                    Text('ราคาต่อชั่วโมง : ${widget.data['rate']}',
+                    Text('ราคาต่อชั่วโมง : ${widget.data['men_rate']}',
                         style: const TextStyle(fontSize: 18)),
-                    Text('ประเภทการทำงาน : ${widget.data['type']}',
+                    Text('ประเภทการทำงาน : ${widget.data['men_type']}',
                         style: const TextStyle(fontSize: 18)),
                   ],
                 ),
@@ -100,7 +100,7 @@ class _CarddetailState extends State<Carddetail> {
                   size: 30,
                 ),
                 Text(
-                  '   ${widget.data['phone']}',
+                  '   ${widget.data['men_phone']}',
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(width: 120),
@@ -118,8 +118,8 @@ class _CarddetailState extends State<Carddetail> {
                     color: Colors.blue,
                   ),
                   Text(
-                    '''   ${widget.data['adr1']} ${widget.data['adr2']} 
-    ${widget.data['city']}''',
+                    '''   ${widget.data['men_tambons']} ${widget.data['men_amphures']} 
+    ${widget.data['men_provices']} ${widget.data['men_pincode']}''',
                     style: const TextStyle(fontSize: 18),
                   ),
                 ],

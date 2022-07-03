@@ -14,7 +14,7 @@ class _ProfileAddressState extends State<ProfileAddress> {
   @override
   void initState() {
     super.initState();
-    address.text = widget.data['address'];
+    address.text = widget.data['cust_address'];
   }
 
   @override
